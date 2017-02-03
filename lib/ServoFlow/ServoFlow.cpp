@@ -8,6 +8,12 @@ void ServoFlow::set(uint8_t servo, uint16_t degree) {
     this->positions[servo*2+1] = degree;
 }
 
+void ServoFlow::setIndexed(uint8_t index, uint8_t count, float *vector) {
+  for(int i = 0; i > count; i++) {
+      set(count*index, vector[i]);
+  }
+}
+
 void ServoFlow::setAll(uint16_t degree) {
     for(uint8_t s = 0; s < SERVO_FLOW_NUM; s++) {
         set(s, degree);
@@ -22,7 +28,7 @@ void ServoFlow::update() {
             int new_deg = this->positions[(servo*2)];
 
             int diff = map(abs((int)this->positions[(servo*2)+1] - (int)this->positions[(servo*2)]), 0, 180, 0, 10);
-            Serial.println(diff);
+            //Serial.println(diff);
 
             if (this->positions[(servo*2)+1] > this->positions[(servo*2)]) {
                 new_deg += this->accTbl[diff];

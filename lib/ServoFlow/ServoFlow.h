@@ -13,6 +13,7 @@ public:
     ServoFlow(Adafruit_PWMServoDriver s);
     void set(uint8_t servo, uint16_t degree);
     void setAll(uint16_t degree);
+    void setIndexed(uint8_t index, uint8_t count, float *vector);
     void update();
 private:
     Adafruit_PWMServoDriver s;
