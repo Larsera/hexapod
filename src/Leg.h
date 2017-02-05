@@ -5,7 +5,7 @@
 
 class Leg {
 public:
-  Leg(float coxaLength, float femusLength, float tibiaLength);
+  Leg(float coxaLength, float femusLength, float tibiaLength, uint8_t inverted);
   int update(float newPos[3]);
   float getCoxaAngle();
   float getFemurAngle();
@@ -14,7 +14,6 @@ public:
 private:
   float coxaLength, femurLength, tibiaLength;
   float coxaAngle, femurAngle, tibiaAngle;
-  float offset_z;
   float legLength; // for optimial draft
   float newPos[3];
   float alpha, beta, gamma;

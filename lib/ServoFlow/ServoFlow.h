@@ -18,7 +18,7 @@ public:
 private:
     Adafruit_PWMServoDriver s;
     uint16_t positions[SERVO_FLOW_NUM * 2] = {};
-    uint8_t accTbl[10] = {1, 5, 10, 10, 15, 15, 15, 15, 17, 19};
+    uint8_t accTbl[10] = {1, 5, 10, 10, 20, 20, 25, 25, 25, 25};
 
     void setDegree(uint8_t servo, uint16_t degree);
 };
