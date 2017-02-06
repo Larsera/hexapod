@@ -22,9 +22,7 @@ void ServoFlow::setAll(uint16_t degree) {
 
 void ServoFlow::update() {
     for(uint8_t servo = 0; servo < SERVO_FLOW_NUM; servo++) {
-        if (this->positions[servo*2] == this->positions[(servo*2)+1]) {
-
-        } else {
+        if (!(this->positions[servo*2] == this->positions[(servo*2)+1])) {
             int new_deg = this->positions[(servo*2)];
 
             int diff = map(abs((int)this->positions[(servo*2)+1] - (int)this->positions[(servo*2)]), 0, 180, 0, 10);
