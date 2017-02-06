@@ -22,12 +22,16 @@ void setup() {
 }
 
 void loop() {
+  #ifdef HEX_PERF
   unsigned long start = micros();
+  #endif
   b->update();
+  #ifdef HEX_PERF
   unsigned long end = micros();
   unsigned long delta = end - start;
-  Serial.print(", update: ");
+  Serial.print(", body->update: ");
   Serial.println(delta);
+  #endif
 
-  delay(20);
+  //delay(20);
 }

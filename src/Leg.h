@@ -3,6 +3,8 @@
 
 #include "Arduino.h"
 
+#define LEG_PI 3.14159265359
+
 class Leg {
 public:
   Leg(float coxaLength, float femusLength, float tibiaLength, uint8_t inverted);
@@ -16,6 +18,7 @@ private:
   float coxaAngle, femurAngle, tibiaAngle;
   float legLength; // for optimial draft
   float newPos[3];
+  float oldPos[3];
   float alpha, beta, gamma;
   uint8_t inverted;
 };

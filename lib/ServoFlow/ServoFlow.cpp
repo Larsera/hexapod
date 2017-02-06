@@ -8,10 +8,10 @@ void ServoFlow::set(uint8_t servo, uint16_t degree) {
     this->positions[servo*2+1] = degree;
 }
 
-void ServoFlow::setIndexed(uint8_t index, uint8_t count, float *vector) {
-  for(int i = 0; i > count; i++) {
-      set(count*index, vector[i]);
-  }
+void ServoFlow::setVector(uint16_t from, uint16_t to, float *degree) {
+    for(uint8_t s = from; s <= to; s++) {
+        set(s, (uint16_t) degree[s]);
+    }
 }
 
 void ServoFlow::setAll(uint16_t degree) {
