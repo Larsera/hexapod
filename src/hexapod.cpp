@@ -33,5 +33,5 @@ void loop() {
   Serial.println(delta);
   #endif
 
-  //delay(20);
+  // delay(20);
 }
