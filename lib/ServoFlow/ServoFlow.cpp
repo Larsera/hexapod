@@ -5,6 +5,7 @@ ServoFlow::ServoFlow(Adafruit_PWMServoDriver s) {
 }
 
 void ServoFlow::set(uint8_t servo, uint16_t degree) {
+    if (degree > 179 || degree < 1) return;
     this->positions[servo*2+1] = degree;
 }
 

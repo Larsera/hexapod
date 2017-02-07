@@ -35,7 +35,7 @@ int Leg::update(float newPos[3]) {
   if (!inverted){
     this->femurAngle = 180 + (-(a1 + a2) * 180 / LEG_PI + 90);
     this->tibiaAngle = 90 + (-b1);
-    this->coxaAngle = -90 + atan2(newPos[2], newPos[0]) * 180 / LEG_PI;
+    this->coxaAngle = 90 - atan2(newPos[2], newPos[0]) * 180 / LEG_PI;
   } else {
     this->femurAngle = ((a1 + a2) * 180 / LEG_PI - 90);
     this->tibiaAngle = 90 + b1;
