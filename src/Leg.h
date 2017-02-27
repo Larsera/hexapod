@@ -15,11 +15,11 @@ public:
   float* getAngles();
 private:
   float coxaLength, femurLength, tibiaLength;
+  float coxaLength2, femurLength2, tibiaLength2;
   float coxaAngle, femurAngle, tibiaAngle;
-  float legLength; // for optimial draft
+  // float legLength; // for optimial draft
   float newPos[3];
   float oldPos[3];
-  float alpha, beta, gamma;
   uint8_t inverted;
 };
 

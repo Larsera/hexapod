@@ -17,8 +17,8 @@ public:
   int update();
 private:
   Adafruit_PWMServoDriver pwmR, pwmL;
-  ServoFlow *sfRight;
-  ServoFlow *sfLeft;
+  ServoFlow *sfR;
+  ServoFlow *sfL;
   Leg leg[6] = {Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 0), Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 0), Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 0)
     , Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 1), Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 1), Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 1)};
 };
