@@ -30,11 +30,14 @@ float* Leg::getAngles() {
 }
 
 int Leg::update(float newPos[3]) {
-  if(!(newPos[0] == oldPos[0] && newPos[1] == oldPos[1] && newPos[2] == oldPos[2])) {
-
+  if((newPos[0] == oldPos[0] && newPos[1] == oldPos[1] && newPos[2] == oldPos[2])) {
+    return 1;
+  }
+  
   float gamma = atan2(newPos[0], newPos[1]);
 
   float l1 = sqrt(pow(newPos[0], 2) + pow(newPos[1], 2));
+  // Optimize by sqrt(x)^2 = x
   float l = sqrt(pow(newPos[2], 2) + pow(l1 - this->coxaLength, 2));
 
   float a1 = acos(newPos[2]/l);
@@ -56,7 +59,7 @@ int Leg::update(float newPos[3]) {
   this->oldPos[0] = newPos[0];
   this->oldPos[1] = newPos[1];
   this->oldPos[2] = newPos[2];
-  }
+
   return 0;
 }
 /*
