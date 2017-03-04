@@ -4,6 +4,7 @@
 #include "Arduino.h"
 #include <Wire.h>
 #include "Leg.h"
+#include "Gait.h"
 #include <ServoFlow.h>
 #include <Adafruit_PWMServoDriver.h>
 
@@ -21,6 +22,8 @@ private:
   ServoFlow *sfL;
   Leg leg[6] = {Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 0), Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 0), Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 0)
     , Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 1), Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 1), Leg(COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, 1)};
+
+    Gait gait = Gait();
 };
 
 #endif

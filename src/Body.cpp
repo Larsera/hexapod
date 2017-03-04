@@ -19,9 +19,16 @@ int Body::update() {
   int y = analogRead(1);
   int z = analogRead(2);
 
-  float mx = map(x, 0, 1024, -75, 120);
-  float my = map(y, 0, 1024, -75, 120);
-  float mz = map(z, 0, 1024, -75, 120);
+  float mx = map(x, 0, 1024, -100, 150);
+  float my = map(y, 0, 1024, -100, 150);
+  float mz = map(z, 0, 1024, -100, 150);
+
+  // Serial.print("\rx: ");
+  // Serial.print(mx);
+  // Serial.print("\ty: ");
+  // Serial.print(my);
+  // Serial.print("\tz: ");
+  // Serial.print(mz);
 
   float r1Pos[3] = {100 + mx, -50 + my,  mz};
   float r2Pos[3] = {100 + mx, -50 + my,  mz};
@@ -30,10 +37,13 @@ int Body::update() {
   float l2Pos[3] = {100 + mx, -50 + my,  mz};
   float l3Pos[3] = {100 + mx, -50 + my,  mz};
 
+  this->gait.animate();
+  float *r1 = this->gait.getR1();
+
   #ifdef BODY_PERF
   unsigned long start = micros();
   #endif
-  leg[0].update(r1Pos);
+  leg[0].update(r1);
   leg[1].update(r2Pos);
   leg[2].update(r3Pos);
   leg[3].update(l1Pos);
@@ -66,13 +76,13 @@ int Body::update() {
   sfL->set(7, leg[5].getFemurAngle());
   sfL->set(8, leg[5].getTibiaAngle());
 
-  // Serial.print("coxaAngleR: "); Serial.print(leg[0].getCoxaAngle());
-  // Serial.print(", femurAngle: "); Serial.print(leg[0].getFemurAngle());
-  // Serial.print(", tibiaAngle: "); Serial.println(leg[0].getTibiaAngle());
+  // Serial.print("\rcoxaAngleR: "); Serial.print(leg[0].getCoxaAngle());
+  // Serial.print(", femurAngleR: "); Serial.print(leg[0].getFemurAngle());
+  // Serial.print(", tibiaAngleR: "); Serial.print(leg[0].getTibiaAngle());
 
-  // Serial.print("coxaAngleR: "); Serial.print(leg[0].getFemurAngle());
-  // Serial.print(",  "); Serial.print(         leg[1].getFemurAngle());
-  // Serial.print(",  "); Serial.println(       leg[2].getFemurAngle());
+  // Serial.print("\rcoxaAngleR: "); Serial.print(leg[0].getFemurAngle());
+  // Serial.print(",  ");            Serial.print(leg[1].getFemurAngle());
+  // Serial.print(",  ");          Serial.print(leg[2].getFemurAngle());
 
   // Serial.print("coxaAngleL: "); Serial.print(leg[3].getCoxaAngle());
   // Serial.print(", femurAngleL: "); Serial.print(leg[3].getFemurAngle());

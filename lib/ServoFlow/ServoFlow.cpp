@@ -7,6 +7,10 @@ ServoFlow::ServoFlow(Adafruit_PWMServoDriver s) {
 void ServoFlow::set(uint8_t servo, uint16_t degree) {
     if (degree > 179 || degree < 1) return;
     this->positions[servo*2+1] = degree;
+    // Serial.print(servo);
+    // Serial.print(',');
+    // Serial.print(degree);
+    // Serial.print(';');
 }
 
 void ServoFlow::setVector(uint16_t from, uint16_t to, float *degree) {
@@ -27,7 +31,6 @@ void ServoFlow::update() {
             int new_deg = this->positions[(servo*2)];
 
             int diff = map(abs((int)this->positions[(servo*2)+1] - (int)this->positions[(servo*2)]), 0, 180, 0, 10);
-            //Serial.println(diff);
 
             if (this->positions[(servo*2)+1] > this->positions[(servo*2)]) {
                 new_deg += this->accTbl[diff];
@@ -37,12 +40,6 @@ void ServoFlow::update() {
 
             setDegree(servo, new_deg);
             this->positions[(servo*2)] = new_deg;
-
-            //Serial.print("Servo: "); Serial.print(servo);
-            //Serial.print(" pos: "); Serial.print(this->positions[(servo*2)]);
-            //Serial.print(" target: ");Serial.println(this->positions[(servo*2)+1]);
-
-
         }
     }
 }
